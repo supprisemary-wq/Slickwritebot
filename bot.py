@@ -10,7 +10,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# REPLACE THE TEXT INSIDE THE QUOTES WITH YOUR ACTUAL TOKEN
+# Your correct token with quotation marks
 TOKEN = "8941435878:AAFFpIeeMyLhJrmN_TiOSCNKwE8TgHOIuVs"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -42,17 +42,12 @@ async def check_grammar(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     except Exception as e:
         await update.message.reply_text("❌ An error occurred.")
 
-def main() -> None:
-    if "YOUR_BOTFATHER" in TOKEN:
-        print("❌ Please put your real token inside the code!")
-        return
-        
+if __name__ == "__main__":
+    # Modern, clean setup to completely bypass the 'Updater' error bug
     application = Application.builder().token(TOKEN).build()
+    
     application.add_handler(CommandHandler("start", start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, check_grammar))
     
     print("✅ Bot is successfully running...")
     application.run_polling(drop_pending_updates=True)
-
-if __name__ == "__main__":
-    main()
