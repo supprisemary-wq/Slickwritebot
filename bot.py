@@ -11,7 +11,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Retrieve the token from environment variables (crucial for Render deployment)
-TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+8941435878:AAFFpIeeMyLhJrmN_TiOSCNKwE8TgHOIuVs
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a message when the command /start is issued."""
