@@ -1,4 +1,3 @@
-import os
 import logging
 import requests
 from telegram import Update
@@ -10,12 +9,13 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Your correct token with quotation marks
+# PASTE YOUR NEW BOT TOKEN INSIDE THE QUOTES BELOW
 TOKEN = "8977212053:AAFVOT9pqI5aHXKEn9k1r_YSRLh9uxgQS4M"
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_html(
         "Hi! 👋\n\n"
-        "I am <b>SlickWriteBot</b>. Send me any text, and I will check it for grammar errors!"
+        "I am your new <b>SlickWriteBot</b>. Send me any text, and I will check it for grammar errors!"
     )
 
 async def check_grammar(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -42,7 +42,7 @@ async def check_grammar(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         await update.message.reply_text("❌ An error occurred.")
 
 if __name__ == "__main__":
-    # Modern, clean setup to completely bypass the 'Updater' error bug
+    # Modern Application build pattern for python-telegram-bot v20+
     application = Application.builder().token(TOKEN).build()
     
     application.add_handler(CommandHandler("start", start))
